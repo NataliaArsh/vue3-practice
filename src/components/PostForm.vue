@@ -10,14 +10,18 @@
       placeholder="Введите описание"
       v-model="post.body"
     >
-    <button
+    <my-button
       @click="addPost"
-    >Добавить</button>
+      class="btn-form"
+    >Добавить
+    </my-button>
   </form>
 </template>
 
 <script>
+import MyButton from './UI/MyButton.vue';
 export default {
+  components: { MyButton },
   data() {
     return {
       post: {
@@ -55,11 +59,7 @@ input {
   padding-left: 5px;
 }
 
-button {
+.btn-form {
   align-self: end;
-  height: 30px;
-  width: 100px;
-  border: 1px solid rgb(224, 87, 224);
-  background: rgb(233, 166, 233);
 }
 </style>
