@@ -5,7 +5,7 @@
         <div class="post__body"><strong>Описание:</strong> {{ post.body }}</div>
       </div>
       <my-button
-      class="post__btn"
+        class="post__btn"
       >
         Удалить
       </my-button>
@@ -13,15 +13,13 @@
 </template>
 
 <script>
-import MyButton from './UI/MyButton.vue'
 export default {
-  components: { MyButton },
-    props: {
-      post: {
-        type: Object,
-        recuired: true
-      }
+  props: {
+    post: {
+      type: Object,
+      recuired: true
     }
+  }
 }
 </script>
 
