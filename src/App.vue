@@ -5,6 +5,7 @@
     />
     <post-list 
       :posts="posts"
+      @remove="removePost"
     />
   </div>
 </template>
@@ -28,6 +29,9 @@ export default {
   methods: {
     addPost(post) {
       this.posts.push(post)
+    },
+    removePost(post) {
+      this.posts = this.posts.filter(p => p.id !== post.id)
     }
 
   },
@@ -44,5 +48,10 @@ export default {
 
 .app {
   padding: 15px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: rebeccapurple;
 }
 </style>
