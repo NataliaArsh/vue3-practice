@@ -1,8 +1,15 @@
 <template>
   <div class="app">
-    <post-form
-      @add="addPost"
-    />
+    <my-button
+      class="btn-dialog" @click="showDialog"
+    >
+      Создать
+    </my-button>
+    <my-dialog v-model:show="visibleDialog">
+      <post-form
+        @add="addPost"
+      />
+    </my-dialog>
     <post-list 
       :posts="posts"
       @remove="removePost"
@@ -13,9 +20,14 @@
 <script>
 import PostForm from "@/components/PostForm";
 import PostList from "@/components/PostList";
+import MyDialog from './components/UI/MyDialog.vue';
+import MyButton from './components/UI/MyButton.vue';
 export default {
   components: {
-    PostForm, PostList
+    PostForm, 
+    PostList,
+    MyDialog,
+    MyButton,
   },
   data() {
     return {
@@ -24,16 +36,20 @@ export default {
         {id:2, title: 'какое-то название 2', body: 'какое-то описание 2'},
         {id:3, title: 'какое-то название 3', body: 'какое-то описание 3'},
       ],
+      visibleDialog: false,
     }
   },
   methods: {
     addPost(post) {
-      this.posts.push(post)
+      this.posts.push(post);
+      this.visibleDialog = false;
     },
     removePost(post) {
-      this.posts = this.posts.filter(p => p.id !== post.id)
-    }
-
+      this.posts = this.posts.filter(p => p.id !== post.id);
+    },
+    showDialog() {
+      this.visibleDialog = true;
+    },
   },
 }
 </script>
@@ -53,5 +69,9 @@ export default {
 h3 {
   margin-bottom: 10px;
   color: rebeccapurple;
+}
+
+.btn-dialog {
+  margin: 15px 0;
 }
 </style>
