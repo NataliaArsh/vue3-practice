@@ -5,18 +5,16 @@
     >
       Создать пост 
     </my-button>
-    <my-button @click="fetchPosts">
-      Загрузить посты
-    </my-button>
     <my-dialog v-model:show="visibleDialog">
       <post-form
         @add="addPost"
       />
     </my-dialog>
-    <post-list 
+    <post-list v-if="!isPostsLoading"
       :posts="posts"
       @remove="removePost"
     />
+    <div v-else>Идет загрузка..</div>
   </div>
 </template>
 
@@ -37,6 +35,7 @@ export default {
     return {
       posts: [],
       visibleDialog: false,
+      isPostsLoading: false,
     }
   },
   methods: {
@@ -51,13 +50,20 @@ export default {
       this.visibleDialog = true;
     },
     async fetchPosts() {
-      try {
-        const respons = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
-        this.posts = respons.data;
+      try { 
+        this.isPostsLoading = true;
+        setTimeout(async () => {
+          const respons = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
+          this.posts = respons.data;
+          this.isPostsLoading = false;
+        }, 1000)
       } catch(e) {
         alert('Ошибка')
       }
     },
+  },
+  mounted() {
+    this.fetchPosts();
   },
 }
 </script>
