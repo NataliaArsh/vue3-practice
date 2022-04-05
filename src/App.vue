@@ -3,7 +3,10 @@
     <my-button
       class="btn-dialog" @click="showDialog"
     >
-      Создать
+      Создать пост 
+    </my-button>
+    <my-button @click="fetchPosts">
+      Загрузить посты
     </my-button>
     <my-dialog v-model:show="visibleDialog">
       <post-form
@@ -22,6 +25,7 @@ import PostForm from "@/components/PostForm";
 import PostList from "@/components/PostList";
 import MyDialog from './components/UI/MyDialog.vue';
 import MyButton from './components/UI/MyButton.vue';
+import axios from 'axios';
 export default {
   components: {
     PostForm, 
@@ -31,11 +35,7 @@ export default {
   },
   data() {
     return {
-      posts: [
-        {id:1, title: 'какое-то название 1', body: 'какое-то описание 1'},
-        {id:2, title: 'какое-то название 2', body: 'какое-то описание 2'},
-        {id:3, title: 'какое-то название 3', body: 'какое-то описание 3'},
-      ],
+      posts: [],
       visibleDialog: false,
     }
   },
@@ -49,6 +49,14 @@ export default {
     },
     showDialog() {
       this.visibleDialog = true;
+    },
+    async fetchPosts() {
+      try {
+        const respons = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10');
+        this.posts = respons.data;
+      } catch(e) {
+        alert('Ошибка')
+      }
     },
   },
 }

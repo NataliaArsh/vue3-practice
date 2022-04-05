@@ -39,7 +39,7 @@ export default {
     padding: 15px;
     background: white;
     border-radius: 12px;
-    min-height: 180px;
+    min-height: 50px;
     min-width: 350px;
 }
 </style>
