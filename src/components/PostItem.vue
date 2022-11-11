@@ -1,6 +1,7 @@
 <template>
     <div class="post">
       <div>
+        <div>{{ post.id }}</div>
         <div class="post__title"><strong>Название:</strong> {{ post.title }}</div>
         <div class="post__body"><strong>Описание:</strong> {{ post.body }}</div>
       </div>
@@ -20,14 +21,14 @@ export default {
       type: Object,
       recuired: true
     }
-  }
+  },
 }
 </script>
 
 
 <style scoped>
 .post {
-  border: 2px solid rgb(224, 87, 224);
+  border: 2px solid rgb(219, 116, 219);
   margin: 10px 0;
   padding: 10px;
   display: flex;
@@ -39,5 +40,6 @@ export default {
 }
 .post__btn{
   align-self: center;
+  margin-left: 10px;
 }
 </style>
