@@ -14,7 +14,7 @@ export default {
 <style scoped>
 .btn {
   height: 40px;
-  min-width: 100px;
+  min-width: 90px;
   border: 1px solid rgb(219, 116, 219);
   background: rgb(246, 222, 246);
   border-radius: 8px;

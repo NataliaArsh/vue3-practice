@@ -5,12 +5,14 @@
         <div class="post__title"><strong>Название:</strong> {{ post.title }}</div>
         <div class="post__body"><strong>Описание:</strong> {{ post.body }}</div>
       </div>
-      <my-button
-        class="post__btn"
-        @click="$emit('remove', post)"
-      >
-        Удалить
-      </my-button>
+      <div class="post__btns">
+        <my-button class="post__btn" @click="$router.push(`/posts/${post.id}`)">
+          Открыть
+        </my-button>
+        <my-button class="post__btn" @click="$emit('remove', post)">
+          Удалить
+        </my-button>
+      </div>
     </div>
 </template>
 
@@ -35,8 +37,8 @@ export default {
   justify-content: space-between;
 }
 
-.post__title {
-  margin-bottom: 5px;
+.post__btns{
+  display: flex;
 }
 .post__btn{
   align-self: center;
