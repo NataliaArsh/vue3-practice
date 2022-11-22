@@ -3,6 +3,7 @@
         <div @click="$router.push('/')" class="navbar__logo">VUE 3</div>
         <div class="navbar__btns">
             <my-button @click="$router.push('/posts')">Список постов</my-button>
+            <my-button @click="$router.push('/store')" class="navbar__btns-r">Store</my-button>
             <my-button @click="$router.push('/about')"  class="navbar__btns-r">О приложении</my-button>
         </div>
     </div>
