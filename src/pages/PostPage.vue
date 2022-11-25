@@ -14,7 +14,7 @@
         <my-dialog v-model:show="visibleDialog">
             <post-form @add="addPost" />
         </my-dialog>
-        <post-list v-if="!isPostsLoading" :posts="sortedAndReerchedPosts" @remove="removePost" />
+        <post-list v-if="!isPostsLoading" :posts="sortedAndReserchedPosts" @remove="removePost" />
         <div v-else>Идет загрузка..</div>
         <div v-intersection="loadMorePosts" class="observer"></div>
     </div>
@@ -96,7 +96,7 @@ export default {
         sortedPosts() {
             return [...this.posts].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
         },
-        sortedAndReerchedPosts() {
+        sortedAndReserchedPosts() {
             return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
         }
     },

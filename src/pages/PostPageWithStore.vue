@@ -21,7 +21,7 @@
         </my-dialog>
         <post-list 
             v-if="!isPostsLoading" 
-            :posts="sortedAndReerchedPosts" 
+            :posts="sortedAndReserchedPosts" 
             @remove="removePost" 
         />
         <div v-else>Идет загрузка..</div>
@@ -80,7 +80,7 @@ export default {
         }),
         ...mapGetters({
             sortedPosts: 'post/sortedPosts',
-            sortedAndReerchedPosts: 'post/sortedAndReerchedPosts' 
+            sortedAndReserchedPosts: 'post/sortedAndReserchedPosts' 
         })
     }
 }
